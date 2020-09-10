@@ -1,5 +1,4 @@
 import React from "react";
-import { findRenderedComponentWithType } from "react-dom/test-utils";
 
 class MemeGenerator extends React.Component {
   constructor() {
@@ -11,6 +10,7 @@ class MemeGenerator extends React.Component {
       allMemeImgs: [],
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -29,10 +29,19 @@ class MemeGenerator extends React.Component {
     });
   }
 
+  handleSubmit(event) {
+    const randomNum = Math.floor(Math.random() * this.state.allMemeImgs.length);
+    const randImg = this.state.allMemeImgs[randomNum].url;
+    // Always Update the state
+    this.setState({ randomImg: randImg });
+
+    event.preventDefault();
+  }
+
   render() {
     return (
       <div>
-        <form className="meme-form">
+        <form className="meme-form" onSubmit={this.handleSubmit}>
           <input
             type="text"
             name="topText"
