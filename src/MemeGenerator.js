@@ -18,7 +18,6 @@ class MemeGenerator extends React.Component {
       .then((response) => response.json())
       .then((response) => {
         const { memes } = response.data;
-        console.log(memes[0]);
         this.setState({ allMemeImgs: memes });
       });
   }
@@ -29,9 +28,6 @@ class MemeGenerator extends React.Component {
       [name]: value,
     });
   }
-  // * Create 2 input fields, one for the topText and one for the bottomText
-  // * Remember that these will be "controlled forms", so make sure to add
-  // * all the attributes you'll need for that to work
 
   render() {
     return (
@@ -56,8 +52,11 @@ class MemeGenerator extends React.Component {
           <button>Gen</button>
         </form>
 
-        <h1>{this.state.topText}</h1>
-        <h1>{this.state.bottomText}</h1>
+        <div className="meme">
+          <img src={this.state.randomImg} alt="" />
+          <h2 className="top">{this.state.topText}</h2>
+          <h2 className="bottom">{this.state.bottomText}</h2>
+        </div>
       </div>
     );
   }
