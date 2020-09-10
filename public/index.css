@@ -8,9 +8,11 @@ body {
 }
 
 header {
-  height: 100px;
+  height: 150px;
   display: flex;
   align-items: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
   background: #6441a5; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
